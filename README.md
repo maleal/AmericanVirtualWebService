@@ -1,7 +1,7 @@
 # AmericanVirtualWebService
 Ejercicio que solicita American Virtual RH para aplicar a su busqueda laboral.
 
-Desarrollo de un Web Service basado en SOAP (con Xml como formato de transferencia de datos) con acceso
+Desarrollé de un Web Service basado en SOAP (con Xml como formato de transferencia de datos) con acceso
 a una base de datos SQLExpress con Windows Authentication.
 Los scripts para la creacion de la base y tablas estan en el proyecto, bajo la carpera "SQL Script".
 
@@ -16,6 +16,9 @@ de donde derivarán UserDTO y ProductDTO (este ultimo tambien nos trae las Categ
 por ejemplo ECommerce o Blog u otras).
 . DataBusinessObject: En la capa de negocio se resulve la logica de negocio que pide el ejercicio. El gol en esta capa esta en que
 uso UN Solo metodo de Consulta, esto es, la interface del servicio solo expondra "Consulta" para su consumo.
+
+Logueo:
+El Logueo de Errores o de las operaciones se hacen en un Archivo de Texto y esta implementado en el proyecto 'Helpers'
 
 
 
