@@ -52,8 +52,8 @@ puede cambiarle a la referencia (es el Namespace:) de ServiceReference1 a AVServ
             }
     . La informacion obtenida en el objeto dto es la siguiente.
     dto.UserEmail
-    dto.UserCreationDate
-    dto.UserStatus
+    dto.UserCreationDate //DateTime de creacion
+    dto.UserStatus       //'E' es que está enable en nuestro caso.
     dto.Id
     
             
