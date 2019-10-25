@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataBusinessLayer;
+using DataTransferObject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,6 +14,17 @@ namespace WorkSpace_AmericanVirtualWcfService
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
+        public UserDTOResp Consultar(UserDTOReq req)
+        {
+            return new UserLogic().Consultar(req);
+
+        }
+
+        public ProductDTOResp Consultar(ProductDTOReq req)
+        {
+            return new ProductLogic().Consultar(req);
+        }
+
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);

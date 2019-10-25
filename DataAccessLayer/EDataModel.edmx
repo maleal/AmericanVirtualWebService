@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="db_america_virtual_exerciseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'db_america_virtual_exercise.dbo.AvUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AvUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="UserPasswordHash" />
+            <PropertyRef Name="UserEmail" />
+            <PropertyRef Name="UserStatus" />
+            <PropertyRef Name="UserCreationDate" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="UserPasswordHash" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="UserEmail" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="UserStatus" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="UserCreationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="catry_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="catry_description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="catry_status" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="money" Nullable="false" />
+          <Property Name="Imagen" Type="image" />
+        </EntityType>
+        <Association Name="FK_Product_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_america_virtual_exerciseModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AvUsers" EntityType="Self.AvUsers" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AvUsers].[Id] AS [Id], 
+    [AvUsers].[UserName] AS [UserName], 
+    [AvUsers].[UserPasswordHash] AS [UserPasswordHash], 
+    [AvUsers].[UserEmail] AS [UserEmail], 
+    [AvUsers].[UserStatus] AS [UserStatus], 
+    [AvUsers].[UserCreationDate] AS [UserCreationDate]
+    FROM [dbo].[AvUsers] AS [AvUsers]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Product_Categories" Association="Self.FK_Product_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_america_virtual_exerciseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="catry_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="catry_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="catry_status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Categories" FromRole="Categories" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_Product_Categories" FromRole="Product" ToRole="Categories" />
+        </EntityType>
+        <EntityType Name="AvUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="UserPasswordHash" />
+            <PropertyRef Name="UserEmail" />
+            <PropertyRef Name="UserStatus" />
+            <PropertyRef Name="UserCreationDate" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserPasswordHash" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserCreationDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_Product_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_america_virtual_exerciseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="AvUsers" EntityType="Self.AvUsers" />
+          <AssociationSet Name="FK_Product_Categories" Association="Self.FK_Product_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_america_virtual_exerciseModelStoreContainer" CdmEntityContainer="db_america_virtual_exerciseEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="db_america_virtual_exerciseModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="catry_name" ColumnName="catry_name" />
+                <ScalarProperty Name="catry_description" ColumnName="catry_description" />
+                <ScalarProperty Name="catry_status" ColumnName="catry_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="db_america_virtual_exerciseModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AvUsers">
+            <EntityTypeMapping TypeName="db_america_virtual_exerciseModel.AvUsers">
+              <MappingFragment StoreEntitySet="AvUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPasswordHash" ColumnName="UserPasswordHash" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="UserCreationDate" ColumnName="UserCreationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

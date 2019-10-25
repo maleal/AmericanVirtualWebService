@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataTransferObject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,7 +13,6 @@ namespace WorkSpace_AmericanVirtualWcfService
     [ServiceContract]
     public interface IService1
     {
-
         [OperationContract]
         string GetData(int value);
 
@@ -20,6 +20,11 @@ namespace WorkSpace_AmericanVirtualWcfService
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here
+        [OperationContract]
+        UserDTOResp Consultar(UserDTOReq req);
+
+        [OperationContract]
+        ProductDTOResp Consultar(ProductDTOReq req);
     }
 
 

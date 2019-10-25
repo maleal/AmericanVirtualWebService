@@ -81,6 +81,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBusinessLayer\DataBusinessLayer.csproj">
+      <Project>{bb903e46-353c-4bc0-9791-43dede2c75d2}</Project>
+      <Name>DataBusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataTransferObject\DataTransferObject.csproj">
+      <Project>{43659de3-662e-4a35-885f-588af56334d2}</Project>
+      <Name>DataTransferObject</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

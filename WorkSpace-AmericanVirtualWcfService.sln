@@ -5,6 +5,18 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkSpace-AmericanVirtualWcfService", "WorkSpace-AmericanVirtualWcfService\WorkSpace-AmericanVirtualWcfService.csproj", "{02020E5D-BAC5-4204-9DCE-8A51626E88E9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Script", "SQL Script", "{51011BBC-F0D3-4495-8E20-9DA912A3B768}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Users\lenovo\Documents\PreAltaCliente SQL\AV_CreateDataBase.sql = ..\..\Users\lenovo\Documents\PreAltaCliente SQL\AV_CreateDataBase.sql
+		..\..\Users\lenovo\Documents\PreAltaCliente SQL\AV_CreateTables.sql = ..\..\Users\lenovo\Documents\PreAltaCliente SQL\AV_CreateTables.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{BC6020D6-24AC-4E20-8A2B-4C5D49286FFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransferObject", "DataTransferObject\DataTransferObject.csproj", "{43659DE3-662E-4A35-885F-588AF56334D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBusinessLayer", "DataBusinessLayer\DataBusinessLayer.csproj", "{BB903E46-353C-4BC0-9791-43DEDE2C75D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +27,18 @@ Global
 		{02020E5D-BAC5-4204-9DCE-8A51626E88E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02020E5D-BAC5-4204-9DCE-8A51626E88E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02020E5D-BAC5-4204-9DCE-8A51626E88E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC6020D6-24AC-4E20-8A2B-4C5D49286FFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC6020D6-24AC-4E20-8A2B-4C5D49286FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC6020D6-24AC-4E20-8A2B-4C5D49286FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC6020D6-24AC-4E20-8A2B-4C5D49286FFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43659DE3-662E-4A35-885F-588AF56334D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43659DE3-662E-4A35-885F-588AF56334D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43659DE3-662E-4A35-885F-588AF56334D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43659DE3-662E-4A35-885F-588AF56334D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB903E46-353C-4BC0-9791-43DEDE2C75D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB903E46-353C-4BC0-9791-43DEDE2C75D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB903E46-353C-4BC0-9791-43DEDE2C75D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB903E46-353C-4BC0-9791-43DEDE2C75D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
