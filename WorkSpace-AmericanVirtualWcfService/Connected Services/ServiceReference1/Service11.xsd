@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DataTransferObject" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataTransferObject" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:56223/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:complexType name="UserDTOReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CatalogoReqBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ListaUsers" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserDTOReq" nillable="true" type="tns:UserDTOReq" />
+  <xs:complexType name="CatalogoReqBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Control" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Operacion" type="xs:int" />
+      <xs:element minOccurs="0" name="Paginacion" nillable="true" type="tns:Paginacion" />
+      <xs:element minOccurs="0" name="Seguridad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoOperacion" type="tns:Accion" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CatalogoReqBase" nillable="true" type="tns:CatalogoReqBase" />
+  <xs:complexType name="Paginacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CantidadRegistros" type="xs:int" />
+      <xs:element minOccurs="0" name="Pagina" type="xs:int" />
+      <xs:element minOccurs="0" name="RegistrosPorPagina" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Paginacion" nillable="true" type="tns:Paginacion" />
+  <xs:simpleType name="Accion">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Crear" />
+      <xs:enumeration value="Actualizar" />
+      <xs:enumeration value="Cancelar" />
+      <xs:enumeration value="Eliminar" />
+      <xs:enumeration value="Activar" />
+      <xs:enumeration value="Desactivar" />
+      <xs:enumeration value="Consultar" />
+      <xs:enumeration value="Autorizar" />
+      <xs:enumeration value="CrearMasivo" />
+      <xs:enumeration value="Anular" />
+      <xs:enumeration value="Generar" />
+      <xs:enumeration value="Confirmar" />
+      <xs:enumeration value="Transferir" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Accion" nillable="true" type="tns:Accion" />
+  <xs:complexType name="ListaUsers">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDTO" nillable="true" type="tns:UserDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListaUsers" nillable="true" type="tns:ListaUsers" />
+  <xs:complexType name="UserDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CatalogoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="UserCreationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UserEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserPasswordHash" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserStatus" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserDTO" nillable="true" type="tns:UserDTO" />
+  <xs:complexType name="CatalogoBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Id_Usuario" type="xs:int" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CatalogoBase" nillable="true" type="tns:CatalogoBase" />
+  <xs:complexType name="UserDTOResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CatalogoRespBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ListaUsers" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserDTOResp" nillable="true" type="tns:UserDTOResp" />
+  <xs:complexType name="CatalogoRespBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Errores" nillable="true" type="tns:ListaErrores" />
+      <xs:element minOccurs="0" name="EsExitosa" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TotalRegistros" type="xs:int" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CatalogoRespBase" nillable="true" type="tns:CatalogoRespBase" />
+  <xs:complexType name="ListaErrores">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Error" nillable="true" type="tns:Error" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListaErrores" nillable="true" type="tns:ListaErrores" />
+  <xs:complexType name="Error">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ExcepcionInterna" nillable="true" type="q1:Exception" />
+      <xs:element minOccurs="0" name="Fila" type="xs:int" />
+      <xs:element minOccurs="0" name="Mensaje" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Error" nillable="true" type="tns:Error" />
+  <xs:complexType name="ProductDTOReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CatalogoReqBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="products" nillable="true" type="tns:ListaProduct" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProductDTOReq" nillable="true" type="tns:ProductDTOReq" />
+  <xs:complexType name="ListaProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductDTO" nillable="true" type="tns:ProductDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListaProduct" nillable="true" type="tns:ListaProduct" />
+  <xs:complexType name="ProductDTO">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ProductDTO" nillable="true" type="tns:ProductDTO" />
+  <xs:complexType name="ProductDTOResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CatalogoRespBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="products" nillable="true" type="tns:ListaProduct" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProductDTOResp" nillable="true" type="tns:ProductDTOResp" />
+</xs:schema>
