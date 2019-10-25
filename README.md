@@ -1,7 +1,7 @@
 # AmericanVirtualWebService
 Ejercicio que solicita American Virtual RH para aplicar a su busqueda laboral.
 
-Desarrollo de un Web Service basado en SOAP (con Xml como formato de transferencia de datos) con acceso
+Desarrollé de un Web Service basado en SOAP (con Xml como formato de transferencia de datos) con acceso
 a una base de datos SQLExpress con Windows Authentication.
 Los scripts para la creacion de la base y tablas estan en el proyecto, bajo la carpera "SQL Script".
 
