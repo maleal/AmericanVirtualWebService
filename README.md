@@ -21,4 +21,39 @@ Logueo:
 El Logueo de Errores o de las operaciones se hacen en un Archivo de Texto y esta implementado en el proyecto 'Helpers'
 
 
+Consumo del Web Services desde un cliente web:
+. Se debe agregar la referencia al web service 'Service1', por ejemplo, en local host, si le agrega a la solucion un proyecto web, debe ir a referencias y hacer add service reference, luego en Discover podra ver esto 'http://localhost:56223/Service1.svc' despues 
+puede cambiarle a la referencia (es el Namespace:) de ServiceReference1 a AVServiceReference. De esta forma 'AVServiceReference' sera la referencia al web services ahora en adelante.
+. El siguiente código es un ejemplo de como consumirlo si necesitáramos consultar info de un Usuario logeado, por ejemplo el de     'mariolealfuentes'(debe estar en la base de datos para q' traiga info):
+            
+            //Instanciamos el objeto UserDTOReq e instanciamos tambien la lista User.
+            //Instanciamos tambien los objetos DTO y DTOResp.
+          
+            AVServiceReference.UserDTOReq req = new AVServiceReference.UserDTOReq()
+            {
+                Users = new AVServiceReference.ListaUsers(),
+            };
+            AVServiceReference.UserDTO dto = new AVServiceReference.UserDTO();
+            AVServiceReference.UserDTOResp resp = new AVServiceReference.UserDTOResp();
 
+            using (AVServiceReference.Service1Client service1 = new AVServiceReference.Service1Client())
+            {
+                req.Operacion = Constantes.User.CONSULTAR_CON_NAME;
+                //
+                dto.UserName = TempData["mario_leal_fuentes"] as string;
+                req.Users.Add(dto);
+                resp = service1.UserConsultar(req);
+            }
+            
+            //Si obtuvimos respuesta
+            if (resp.Users != null && resp.Users.Count() > 0)
+            {
+                dto = resp.Users[0];
+            }
+    . La informacion obtenida en el objeto dto es la siguiente.
+    dto.UserEmail
+    dto.UserCreationDate
+    dto.UserStatus
+    dto.Id
+    
+            
