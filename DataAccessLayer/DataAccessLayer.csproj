@@ -110,6 +110,10 @@
       <Project>{43659de3-662e-4a35-885f-588af56334d2}</Project>
       <Name>DataTransferObject</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{3b8a59a5-4326-4580-abe9-8e5570d1be30}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

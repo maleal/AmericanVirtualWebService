@@ -1,4 +1,5 @@
 ﻿using DataTransferObject;
+using Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,17 +15,26 @@ namespace DataAccessLayer
         public ListaProduct ObtenerProduct(int Id)
         {
             ListaProduct prodList = new ListaProduct();
-            var tableProd = from product in en.Product where product.Id == Id select product;
-            ProductDTO pdto = new ProductDTO();
-            foreach (var reg in tableProd)
+            string log;
+            try
             {
-                pdto.Id = Id; //or reg.Id;
-                pdto.ProductName = reg.ProductName;
-                pdto.PrecioUnitario = reg.PrecioUnitario;
-                pdto.Imagen = reg.Imagen;
-                pdto.CategoryId = reg.CategoryId; //Otra forma pero mmm   pdto.Category.Id = reg.Categories.Id;
-                //Agregamos a la lista el producto encontrado por Id
-                prodList.Add(pdto);
+                var tableProd = from product in en.Product where product.Id == Id select product;
+                ProductDTO pdto = new ProductDTO();
+                foreach (var reg in tableProd)
+                {
+                    pdto.Id = Id; //or reg.Id;
+                    pdto.ProductName = reg.ProductName;
+                    pdto.PrecioUnitario = reg.PrecioUnitario;
+                    pdto.Imagen = reg.Imagen;
+                    pdto.CategoryId = reg.CategoryId; //Otra forma pero mmm   pdto.Category.Id = reg.Categories.Id;
+                    //Agregamos a la lista el producto encontrado por Id
+                    prodList.Add(pdto);
+                }
+            }
+            catch (Exception e)
+            {
+                log = string.Format("Error al obtener el Producto con Id:{0} excetion Msg:{1}", Id, e.Message);
+                Log.getInstance().Escribir(log);
             }
             return prodList;
         }
