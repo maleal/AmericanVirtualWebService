@@ -18,7 +18,7 @@ por ejemplo ECommerce o Blog u otras).
 uso UN Solo metodo de Consulta, esto es, la interface del servicio solo expondra "Consulta" para su consumo.
 
 Logueo:
-El Logeo de Errores o de las operaciones se hacen en un Archivo de Texto y esta implementado en el proyecto 'Helpers'
+El Logueo de Errores o de las operaciones se hacen en un Archivo de Texto y esta implementado en el proyecto 'Helpers'
 
 
 
