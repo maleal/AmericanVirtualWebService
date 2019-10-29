@@ -5,12 +5,6 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkSpace-AmericanVirtualWcfService", "WorkSpace-AmericanVirtualWcfService\WorkSpace-AmericanVirtualWcfService.csproj", "{02020E5D-BAC5-4204-9DCE-8A51626E88E9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Script", "SQL Script", "{51011BBC-F0D3-4495-8E20-9DA912A3B768}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\Users\lenovo\Documents\PreAltaCliente SQL\AV_CreateDataBase.sql = ..\..\Users\lenovo\Documents\PreAltaCliente SQL\AV_CreateDataBase.sql
-		..\..\Users\lenovo\Documents\PreAltaCliente SQL\AV_CreateTables.sql = ..\..\Users\lenovo\Documents\PreAltaCliente SQL\AV_CreateTables.sql
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{BC6020D6-24AC-4E20-8A2B-4C5D49286FFF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransferObject", "DataTransferObject\DataTransferObject.csproj", "{43659DE3-662E-4A35-885F-588AF56334D2}"
@@ -22,6 +16,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationClient", "WebApplicationClient\WebApplicationClient.csproj", "{0191A5DD-946A-4AF6-9997-FF3DFD51ACDC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{02020E5D-BAC5-4204-9DCE-8A51626E88E9} = {02020E5D-BAC5-4204-9DCE-8A51626E88E9}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Script", "SQL Script", "{B50266CC-1B6B-4D8C-8E91-72E5CF65E5C0}"
+	ProjectSection(SolutionItems) = preProject
+		SQL Script\AV_CreateDataBase.sql = SQL Script\AV_CreateDataBase.sql
+		SQL Script\AV_CreateTables.sql = SQL Script\AV_CreateTables.sql
 	EndProjectSection
 EndProject
 Global
